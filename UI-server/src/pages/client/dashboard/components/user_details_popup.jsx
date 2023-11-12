@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import global from "../../../../../global";
 
 export default function Popup(props) {
     useEffect(() => {
@@ -17,7 +18,7 @@ export default function Popup(props) {
   }
 
     function get_owners_data() {
-        var post_url = 'http://localhost:5000/client/applicant_get_listing_owner_details'
+        var post_url = global.backend_server+'/client/applicant_get_listing_owner_details'
         var data = { 'listing_id': props.id }
         axios.post(post_url, data, headers)
             .then(res => {

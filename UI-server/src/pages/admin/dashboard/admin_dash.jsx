@@ -10,6 +10,7 @@ import Users_Manager from "./components/users";
 import Profile from "../../client/dashboard/components/profile";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import global from '../../../../global'
 
 function Admin_Dashboard(){
     const [View, setView]=useState('dashboard')
@@ -26,7 +27,7 @@ function Admin_Dashboard(){
     },[])
 
     function auth_status(){
-        var post_url = 'http://localhost:5000/auth/status'
+        var post_url = global.backend_server+'/auth/status'
         var data = { 'code':101 }
         axios.post(post_url, data,headers)
             .then(res => { 
@@ -42,7 +43,7 @@ function Admin_Dashboard(){
     }
 
     function logout_request(){
-        var post_url = 'http://localhost:5000/auth/logout'
+        var post_url = global.backend_server+'/auth/logout'
         var data = { 'code':101 }
         axios.post(post_url, data,headers)
             .then(res => { 

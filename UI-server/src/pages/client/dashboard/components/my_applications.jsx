@@ -5,7 +5,7 @@ import axios from "axios";
 import okay_logo from '../dash_icons/check.svg'
 import Popup from "./user_details_popup";
 import { ToastContainer, toast } from 'react-toastify';
-
+import global from "../../../../../global";
 
 
 function My_Applications_Manager() {
@@ -23,7 +23,7 @@ function My_Applications_Manager() {
     const [owner_data,set_owner_data] = useState({})
 
     function get_users_data() {
-        var post_url = 'http://localhost:5000/client/my_application_data'
+        var post_url = global.backend_server+'/client/my_application_data'
         var data = { 'code': 101 }
         axios.post(post_url, data, headers)
             .then(res => {
@@ -40,7 +40,7 @@ function My_Applications_Manager() {
     }
 
     async function get_owners_data(listing_id) {
-        var post_url = 'http://localhost:5000/client/applicant_get_listing_owner_details'
+        var post_url = global.backend_server+'/client/applicant_get_listing_owner_details'
         await set_listing_id_in_view(listing_id);
         var data = { 'listing_id': listing_id }
         console.log('Owners data for:',data)
@@ -65,7 +65,7 @@ function My_Applications_Manager() {
 
 
     function delete_listing_request(listing_id) {
-        var post_url = 'http://localhost:5000/admin/delete_listing_request'
+        var post_url = global.backend_server+'/admin/delete_listing_request'
         var data = { 'id': listing_id }
         axios.post(post_url, data, headers)
             .then(res => {
@@ -86,7 +86,7 @@ function My_Applications_Manager() {
 
 
     function delete_my_application(application_id) {
-        var post_url = 'http://localhost:5000/client/delete_my_application'
+        var post_url = global.backend_server+'/client/delete_my_application'
         var data = { 'application_id': application_id }
         console.log('Deleting my application...:',data)
         axios.post(post_url, data, headers)

@@ -9,6 +9,7 @@ import google_logo from '../auth/login/assets/imgs/google.svg'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import global from '../../../global';
 
 
 
@@ -34,7 +35,7 @@ export default function Admin_Login() {
 
     function auth_status() {
         
-        var post_url = 'http://localhost:5000/auth/status'
+        var post_url = global.backend_server+'/auth/status'
         var data = { 'code':101 }
         axios.post(post_url, data,headers)
             .then(res => { 
@@ -55,7 +56,7 @@ export default function Admin_Login() {
         var password = document.getElementById('user_password').value
     
         if (password.length > 0 && email.length > 0) {
-            var post_url = 'http://localhost:5000/auth/login'
+            var post_url = global.backend_server+'/auth/login'
             var data = { email: email, password: password }
             axios.post(post_url, data,headers)
             .then(res => { 

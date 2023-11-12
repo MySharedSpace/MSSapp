@@ -1,11 +1,11 @@
-import "./navbar.css";
+//import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../home/context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios";
-import global from "../../../../../global";
+import global from "../../../../global";
 
 
 const Navbar = () => {

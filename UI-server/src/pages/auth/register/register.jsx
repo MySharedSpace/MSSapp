@@ -5,6 +5,7 @@ import password_logo from '../login/assets/imgs/lock.svg'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import global from "../../../../global";
 
 
 export default function Register() {
@@ -29,7 +30,7 @@ export default function Register() {
 
 
     function auth_status() {
-        var post_url = 'http://localhost:5000/auth/status'
+        var post_url = global.backend_server+'/auth/status'
         var data = { 'code': 101 }
         axios.post(post_url, data,headers)
             .then(res => {
@@ -55,7 +56,7 @@ export default function Register() {
             //Check if the passwords match
             console.log(username, email , password,"pp");
             if (password === confirmed_password) {
-                var post_url = 'http://localhost:5000/auth/new_registration'
+                var post_url = global.backend_server+'/auth/new_registration'
                 var data = { 'username':username,'email':email , 'password':password}
                 axios.post(post_url, data,headers)
                     .then(res => {

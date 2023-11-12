@@ -6,6 +6,7 @@ import password_logo from '../../../auth/login/assets/imgs/lock.svg'
 import add_logo from '../dash_icons/add_circle.svg'
 import profile_logo from '../dash_icons/profile_logo.svg'
 import { ToastContainer,toast } from "react-toastify";
+import global from "../../../../../global";
 
 function Profile() {
     const cloudinaryRef = useRef()
@@ -27,7 +28,7 @@ function Profile() {
     const [profile_pic, set_profile_pic] = useState('')
 
     function auth_status() {
-        var post_url = 'http://localhost:5000/admin/dashboard_data'
+        var post_url = global.backend_server+'/admin/dashboard_data'
         var data = { 'code': 101 }
         axios.post(post_url, data, headers)
             .then(res => {
@@ -61,7 +62,7 @@ function Profile() {
 
 
     function get_profile_data() {
-        var post_url = 'http://localhost:5000/client/profile_data'
+        var post_url = global.backend_server+'/client/profile_data'
         var data = { 'code': 101 }
         axios.post(post_url, data, headers)
             .then(res => {
@@ -80,7 +81,7 @@ function Profile() {
     }
 
     function update_profile_pic(url){
-        var post_url = 'http://localhost:5000/client/update_profile_picture'
+        var post_url = global.backend_server+'/client/update_profile_picture'
         var data = { 'url': url }
         axios.post(post_url, data, headers)
             .then(res => {
@@ -97,7 +98,7 @@ function Profile() {
     
 
     function update_profile_details(){
-        var post_url = 'http://localhost:5000/client/update_profile_details'
+        var post_url = global.backend_server+'/client/update_profile_details'
         var data = { 
             'username':username,
             'first_name':first_name,

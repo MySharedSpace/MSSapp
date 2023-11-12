@@ -3,6 +3,7 @@ import delete_logo from '../dash_icons/delete.svg'
 import view_logo from '../dash_icons/visibility.svg'
 import axios from "axios";
 import okay_logo from '../dash_icons/check.svg'
+import global from "../../../../../global";
 
 
 
@@ -14,7 +15,7 @@ function Manage_My_Applications( props ) {
     const headers = { headers: { 'Content-Type': 'application/json' }, withCredentials: true }
     
     function get_users_data( id ) {
-        var post_url = 'http://localhost:5000/client/get_my_listing_applicants_data'
+        var post_url = global.backend_server+'/client/get_my_listing_applicants_data'
         var data = { 'id': id }
         axios.post(post_url, data, headers)
             .then(res => {
@@ -31,7 +32,7 @@ function Manage_My_Applications( props ) {
     }
 
     function delete_listing_request(listing_id){
-        var post_url = 'http://localhost:5000/admin/delete_listing_request'
+        var post_url = global.backend_server+'/admin/delete_listing_request'
         var data = { 'id': listing_id }
         axios.post(post_url, data, headers)
             .then(res => {
@@ -51,7 +52,7 @@ function Manage_My_Applications( props ) {
 
 
     function approve_my_applicants_application(listing_id){
-        var post_url = 'http://localhost:5000/client/approve_my_applicants_application'
+        var post_url = global.backend_server+'/client/approve_my_applicants_application'
         var data = { 'application_id': listing_id }
         axios.post(post_url, data, headers)
             .then(res => {

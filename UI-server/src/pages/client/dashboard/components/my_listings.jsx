@@ -4,7 +4,7 @@ import view_logo from '../dash_icons/visibility.svg'
 import profile_logo from '../dash_icons/profile_logo.svg'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import global from "../../../../../global";
 
 
 function My_Listings_Manager(props) {
@@ -19,7 +19,7 @@ function My_Listings_Manager(props) {
     const headers = { headers: { 'Content-Type': 'application/json' }, withCredentials: true }
 
     function get_users_data() {
-        var post_url = 'http://localhost:5000/client/my_listings_data'
+        var post_url = global.backend_server+'/client/my_listings_data'
         var data = { 'code': 101 }
         axios.post(post_url, data, headers)
             .then(res => {
@@ -37,7 +37,7 @@ function My_Listings_Manager(props) {
     }
 
     function delete_listing_request(listing_id){
-        var post_url = 'http://localhost:5000/admin/delete_listing_request'
+        var post_url = global.backend_server+'/admin/delete_listing_request'
         var data = { 'id': listing_id }
         axios.post(post_url, data, headers)
             .then(res => {

@@ -5,6 +5,7 @@ import './IndividualListing.css';
 import Navbar from '../home/components/navbar/Navbar';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import global  from '../../../global';
 
 
 function IndividualListing() {
@@ -22,7 +23,7 @@ function IndividualListing() {
 
   function make_application(listing_id){
     var application_data={'id':listing_id}
-    var post_url = 'http://localhost:5000/client/my_application_request'
+    var post_url = global.backend_server+'/client/my_application_request'
         axios.post(post_url, application_data, headers)
             .then(res => {
                 console.log(res.data)
@@ -42,7 +43,7 @@ function IndividualListing() {
   useEffect(() => {
     const fetchListing = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/listingDetails/${id}`);
+        const response = await axios.get(global.backend_server+`/listingDetails/${id}`);
         setListing(response.data);
       } catch (error) {
         console.error('Error fetching listing:', error);

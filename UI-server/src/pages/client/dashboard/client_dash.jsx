@@ -14,6 +14,8 @@ import My_Listings_Manager from "./components/my_listings";
 import My_Applications_Manager from "./components/my_applications";
 import Manage_My_Applications from "./components/applicants_management";
 
+import global from "../../../../global";
+
 function Client_Dashboard() {
     const [View, setView] = useState('profile')
     const [listing_being_managed, set_listing_being_managed] = useState('')
@@ -30,7 +32,7 @@ function Client_Dashboard() {
     }, [])
 
     function auth_status() {
-        var post_url = 'http://localhost:5000/auth/status'
+        var post_url = global.backend_server+'/auth/status'
         var data = { 'code': 101 }
         axios.post(post_url, data, headers)
             .then(res => {
@@ -46,7 +48,7 @@ function Client_Dashboard() {
     }
 
     function logout_request() {
-        var post_url = 'http://localhost:5000/auth/logout'
+        var post_url = global.backend_server+'/auth/logout'
         var data = { 'code': 101 }
         axios.post(post_url, data, headers)
             .then(res => {

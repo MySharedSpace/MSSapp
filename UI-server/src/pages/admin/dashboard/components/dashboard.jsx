@@ -1,6 +1,7 @@
 import React, { useState ,useEffect } from "react";
 import {CartesianAxis, CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis,YAxis} from 'recharts'
 import axios from 'axios'
+import global from '../../../../../global'
 
 function Dashboard() {
     useEffect(()=>{
@@ -10,7 +11,7 @@ function Dashboard() {
     const headers={headers: {'Content-Type': 'application/json'},withCredentials: true}
 
     function auth_status(){
-        var post_url = 'http://localhost:5000/admin/dashboard_data'
+        var post_url = global.backend_server+'/admin/dashboard_data'
         var data = { 'code':101 }
         axios.post(post_url, data,headers)
             .then(res => { 

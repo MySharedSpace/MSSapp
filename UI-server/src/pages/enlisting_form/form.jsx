@@ -10,6 +10,7 @@ import Navbar from '../home/components/navbar/Navbar'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import Spinner from './Spinner'
+import global from '../../../global'
 
 
 export default function Enlisting_form() {
@@ -41,7 +42,7 @@ export default function Enlisting_form() {
           for (const file of files) {
             data.append("file", file);
           }
-          const res = await axios.post('http://localhost:5000/upload', data);
+          const res = await axios.post(global.backend_server+'/upload', data);
           console.log(data);
           setImages((oldImages) => {
             return [...oldImages, ...res.data.links];
@@ -61,7 +62,7 @@ export default function Enlisting_form() {
 
 
     function check_draft() {
-        var post_url = 'http://localhost:5000/client/check_draft'
+        var post_url = global.backend_server+'/client/check_draft'
         var data = { 'code': 101 }
         axios.post(post_url, data, headers)
             .then(res => {
@@ -78,7 +79,7 @@ export default function Enlisting_form() {
     }
 
     function update_draft(field, data_item) {
-        var post_url = 'http://localhost:5000/client/update_draft'
+        var post_url = global.backend_server+'/client/update_draft'
         var data = { data: [field, data_item] }
         if (data_item.length > 0 && field.length > 0) {
             axios.post(post_url, data, headers)
@@ -114,7 +115,7 @@ export default function Enlisting_form() {
             images
         }
         console.log(formData)
-        axios.post('http://localhost:5000/client/upload_listing', formData, headers)
+        axios.post(global.backend_server+'/client/upload_listing', formData, headers)
             .then(res => {
                 console.log(res.data)
                 if (res.data['status'] === 'success') {
@@ -208,7 +209,7 @@ export default function Enlisting_form() {
             desc,
             images
         }
-        axios.post('http://localhost:5000/insert', formData)
+        axios.post(global.backend_server+'/insert', formData)
     }
 
 

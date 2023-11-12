@@ -58,6 +58,11 @@ app.use(session({
 
 mongoose.connect("mongodb+srv://root:123@cluster0.u5atqck.mongodb.net/sharespace?retryWrites=true&w=majority", { useNewUrlParser: true ,useUnifiedTopology: true });
 
+
+app.get('/',(req,res)=>{
+    res.json({'message':'Hello,Hi,Im sharespace'})
+})
+
 app.get('/listingDetails', async(req, res) => {
     
         try {

@@ -5,7 +5,7 @@ import Navbar from '../home/components/navbar/Navbar'
 import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast';
 import { useEffect } from 'react';
-
+import global from '../../../global';
 
 
 

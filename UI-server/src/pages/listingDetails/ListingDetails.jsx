@@ -2,9 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Navbar from '../home/components/navbar/Navbar';
+import Navbar from '../shared_components/nav_bar/nav_bar';
 import Filter_bar from './components/filter_bar';
 import { ToastContainer, toast } from 'react-toastify';
+import global from '../../../global';
 
 export default function ListingDetails() {
   const headers = { headers: { 'Content-Type': 'application/json' }, withCredentials: true }
@@ -14,7 +15,7 @@ export default function ListingDetails() {
     // Fetch the listings data from the server
     const fetchListings = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/listingDetails');
+        const response = await axios.get(global.backend_server+'/listingDetails');
         setListings(response.data);
       } catch (error) {
         console.error('Error fetching listings:', error);
@@ -27,7 +28,7 @@ export default function ListingDetails() {
 
   function search(search_key){
     var filter_data={'search_key':search_key}
-    var post_url = 'http://localhost:5000/client/listing_search'
+    var post_url = global.backend_server+'/client/listing_search'
         axios.post(post_url, filter_data, headers)
             .then(res => {
                 console.log(res.data)

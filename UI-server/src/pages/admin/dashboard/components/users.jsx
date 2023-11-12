@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import delete_logo from '../dash_icons/delete.svg'
 import view_logo from '../dash_icons/visibility.svg'
 import axios from "axios";
+import global from "../../../../../global";
 
 
 function Users_Manager() {
@@ -12,7 +13,7 @@ function Users_Manager() {
     const headers = { headers: { 'Content-Type': 'application/json' }, withCredentials: true }
 
     function get_users_data() {
-        var post_url = 'http://localhost:5000/admin/users_data'
+        var post_url = global.backend_server+'/admin/users_data'
         var data = { 'code': 101 }
         axios.post(post_url, data, headers)
             .then(res => {
